@@ -44,8 +44,11 @@ public with sharing class TriggerTest {
         
         // Perform the test
         Test.startTest();
-        insert accountTypeProspect;
-        insert accountTypeNotChange;
+        Database.DMLOptions dml = new Database.DMLOptions(); 
+        dml.DuplicateRuleHeader.allowSave = true;
+        dml.DuplicateRuleHeader.runAsCurrentUser = true;
+        Database.insert(accountTypeProspect, dml);
+        Database.insert(accountTypeNotChange, dml);
         Test.stopTest();
         
         // Retrieve the accounts again
@@ -164,8 +167,11 @@ public with sharing class TriggerTest {
 
         // Perform the test
         Test.startTest();
-        insert accountsToInsert;
-        insert accountsNotHot;
+        Database.DMLOptions dml = new Database.DMLOptions(); 
+        dml.DuplicateRuleHeader.allowSave = true;
+        dml.DuplicateRuleHeader.runAsCurrentUser = true;
+        Database.insert(accountsToInsert, dml);
+        Database.insert(accountsNotHot, dml);
         Test.stopTest();
 
         // Retrieve the accounts again
@@ -211,7 +217,10 @@ public with sharing class TriggerTest {
 
         // Perform the test
         Test.startTest();
-        insert accountsToInsert;
+        Database.DMLOptions dml = new Database.DMLOptions(); 
+        dml.DuplicateRuleHeader.allowSave = true;
+        dml.DuplicateRuleHeader.runAsCurrentUser = true;
+        Database.insert(accountsToInsert, dml);
         Test.stopTest();
 
         // Retrieve the newly created Contacts
